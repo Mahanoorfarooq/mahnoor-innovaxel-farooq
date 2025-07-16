@@ -29,7 +29,8 @@ This is a simple RESTful API built with **Flask** and **SQLite** for shortening 
 - models.py #URL model using SQLAlchemy
 - requirements.txt # Project dependencies
 - README.md #setup and usage guide
-- .gitignore 
+- .gitignore
+- some screenshots of testing api
 ---
 
 
