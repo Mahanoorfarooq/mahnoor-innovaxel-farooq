@@ -35,3 +35,20 @@ def create_short_url():
         "createdAt": new_url.created_at.isoformat(),
         "updatedAt": new_url.updated_at.isoformat()
     }), 201
+
+@app.route("/shorten/<short_code>", methods=["GET"])
+def get_original_url(short_code):
+    url_entry = URL.query.filter_by(short_code=short_code).first()
+    if not url_entry:
+        return jsonify({"error": "Not found"}), 404
+
+    url_entry.access_count += 1
+    db.session.commit()
+
+    return jsonify({
+        "id": url_entry.id,
+        "url": url_entry.url,
+        "shortCode": url_entry.short_code,
+        "createdAt": url_entry.created_at.isoformat(),
+        "updatedAt": url_entry.updated_at.isoformat()
+    }), 200
