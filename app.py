@@ -52,3 +52,23 @@ def get_original_url(short_code):
         "createdAt": url_entry.created_at.isoformat(),
         "updatedAt": url_entry.updated_at.isoformat()
     }), 200
+
+@app.route("/shorten/<short_code>", methods=["PUT"])
+def update_url(short_code):
+    data = request.get_json()
+    new_url = data.get("url")
+    url_entry = URL.query.filter_by(short_code=short_code).first()
+    if not url_entry:
+        return jsonify({"error": "Not found"}), 404
+
+    url_entry.url = new_url
+    url_entry.updated_at = datetime.utcnow()
+    db.session.commit()
+
+    return jsonify({
+        "id": url_entry.id,
+        "url": url_entry.url,
+        "shortCode": url_entry.short_code,
+        "createdAt": url_entry.created_at.isoformat(),
+        "updatedAt": url_entry.updated_at.isoformat()
+    }), 200
