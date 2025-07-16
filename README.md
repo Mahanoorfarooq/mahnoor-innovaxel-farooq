@@ -1,11 +1,6 @@
-
----
-
-
-```markdown
 # URL Shortener API – Innovaxel Assignment
 
-This is a simple RESTful API built with **Flask** and **SQLite** for shortening long URLs into short, easy-to-share codes.  
+This is a simple RESTful API built with **Flask** and **SQLite** for shortening long URLs into short, easy-to-share codes.
 
 ---
 
@@ -19,7 +14,7 @@ This is a simple RESTful API built with **Flask** and **SQLite** for shortening 
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - **Python 3**
 - **Flask** 
@@ -30,22 +25,13 @@ This is a simple RESTful API built with **Flask** and **SQLite** for shortening 
 
 ## 📂 Project Structure
 
-```
-
-url-shortener-api/
-├── app.py               # Main Flask application
-├── models.py            # URL model using SQLAlchemy
-├── requirements.txt     # Project dependencies
-├── README.md            # Setup and usage guide
-├── .gitignore
-
-````
-
+- app.py # Main functionality
+- models.py #URL model using SQLAlchemy
+- requirements.txt # Project dependencies
+- README.md #setup and usage guide
+- .gitignore 
 ---
 
-## ⚙️ Setup Instructions (Without Virtual Environment)
-
-> ✅ You can skip the virtual environment if you prefer to install globally.
 
 ### 1. Clone the Repository
 
@@ -53,6 +39,7 @@ url-shortener-api/
 git clone https://github.com/Mahanoorfarooq/mahnoor-innovaxel-farooq.git
 cd url-shortener-api
 ````
+
 
 ### 2. Install Required Packages
 
