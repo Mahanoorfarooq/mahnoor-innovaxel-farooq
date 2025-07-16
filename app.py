@@ -72,3 +72,31 @@ def update_url(short_code):
         "createdAt": url_entry.created_at.isoformat(),
         "updatedAt": url_entry.updated_at.isoformat()
     }), 200
+
+@app.route("/shorten/<short_code>", methods=["DELETE"])
+def delete_url(short_code):
+    url_entry = URL.query.filter_by(short_code=short_code).first()
+    if not url_entry:
+        return '', 404
+
+    db.session.delete(url_entry)
+    db.session.commit()
+    return '', 204
+
+@app.route("/shorten/<short_code>/stats", methods=["GET"])
+def get_stats(short_code):
+    url_entry = URL.query.filter_by(short_code=short_code).first()
+    if not url_entry:
+        return jsonify({"error": "Not found"}), 404
+
+    return jsonify({
+        "id": url_entry.id,
+        "url": url_entry.url,
+        "shortCode": url_entry.short_code,
+        "createdAt": url_entry.created_at.isoformat(),
+        "updatedAt": url_entry.updated_at.isoformat(),
+        "accessCount": url_entry.access_count
+    }), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
